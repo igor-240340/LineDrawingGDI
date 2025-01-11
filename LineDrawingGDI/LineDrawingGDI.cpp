@@ -26,7 +26,7 @@ VOID OnPaint(HDC hdc) {
 
     // Draw axis.
     Pen      pen_x(Color(255, 255, 0, 0));
-    graphics.DrawLine(&pen_x, 0, height / 2, width - 1, height / 2);
+    graphics.DrawLine(&pen_x, 0, height / 2 - 1, width - 1, height / 2 - 1);
     Pen      pen_y(Color(255, 0, 255, 0));
     graphics.DrawLine(&pen_y, width / 2, 0, width / 2, height - 1);
 
@@ -44,13 +44,13 @@ VOID OnPaint(HDC hdc) {
         {round(-0.66344f), round(-1.51963f), round(-8.68639f), round(-15.49434f)},
         {round(0.52943f), round(-1.17598f), round(-3.7053f), round(-16.18403f)},
         {round(1.31772f), round(-2.10619f), round(10.16512f), round(-22.39123f)},
-        {round(1.71092f), round(-0.64989f), round(3.37499f), round(-1.43225f)},
+        {round(1.71092f), round(-0.64989f), round(3.37499f), round(-1.43225f)}
     } };
 
     for (const Line& line : lines) {
         graphics.DrawLine(&pen,
-            (width / 2) + line.x0, (height / 2) - line.y0,
-            (width / 2) + line.x1, (height / 2) - line.y1);
+            (width / 2) + line.x0, (height / 2 - 1) - line.y0,
+            (width / 2) + line.x1, (height / 2 - 1) - line.y1);
     }
 }
 
