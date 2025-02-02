@@ -58,24 +58,24 @@ VOID OnPaint(HDC hdc) {
     }*/
 
     std::array<Line, 18> test_line_set_2{ {
-        {round(700.0f), round(10.0f), round(600.0f), round(20.0f)}, // Trivially accepted.
-        {round(-100.0f), round(-200.0f), round(100.0f), round(-200.0f)}, // Trivially rejected.
-        {round(-200.0f), round(-100.0f), round(-200.0f), round(700.0f)}, // Trivially rejected.
-        {round(-100.0f), round(800.0f), round(900.0f), round(800.0f)}, // Trivially rejected.
-        {round(1000.0f), round(-100.0f), round(1000.0f), round(100.0f)}, // Trivially rejected.
-        {round(-50.0f), round(100.0f), round(50.0f), round(100.0f)},
-        {round(200.0f), round(50.0f), round(200.0f), round(-50.0f)},
-        {round(850.0f), round(100.0f), round(750.0f), round(100.0f)},
-        {round(200.0f), round(550.0f), round(200.0f), round(650.0f)},
-        {round(-50.0f), round(150.0f), round(850.0f), round(150.0f)},
-        {round(250.0f), round(-50.0f), round(250.0f), round(650.0f)},
-        {round(-150.0f), round(50.0f), round(50.0f), round(-150.0f)},
-        {round(-25.0f), round(75.0f), round(75.0f), round(-25.0f)},
-        {round(724.0f), round(-25.0f), round(824.0f), round(75.0f)},
-        {round(724.0f), round(624.0f), round(824.0f), round(524.0f)},
-        {round(-25.0f), round(524.0f), round(75.0f), round(624.0f)},
-        {round(-100.0f), round(-150.0f), round(899.0f), round(749.0f)}, // The worst case 1.
-        {round(-100.0f), round(749.0f), round(899.0f), round(-150.0f)} // The worst case 2.
+        {700, 10, 600, 20}, // Trivially accepted.
+        {-100, -200, 100, -200}, // Trivially rejected.
+        {-200, -100, -200, 700}, // Trivially rejected.
+        {-100, 800, 900, 800}, // Trivially rejected.
+        {1000, -100, 1000, 100}, // Trivially rejected.
+        {-50, 100, 50, 100},
+        {200, 50, 200, -50},
+        {850, 100, 750, 100},
+        {200, 550, 200, 650},
+        {-50, 150, 850, 150},
+        {250, -50, 250, 650},
+        {-150, 50, 50, -150},
+        {-25, 75, 75, -25},
+        {724, -25, 824, 75},
+        {724, 624, 824, 524},
+        {-25, 524, 75, 624},
+        {-100, -150, 899, 749}, // The worst case 1.
+        {-100, 749, 899, -150} // The worst case 2.
     } };
 
     for (const Line& line : test_line_set_2) {
