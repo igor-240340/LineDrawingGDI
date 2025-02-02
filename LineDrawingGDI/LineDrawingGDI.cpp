@@ -24,13 +24,17 @@ VOID OnPaint(HDC hdc) {
     Graphics graphics(hdc);
     Pen      pen(Color(255, 0, 0, 0));
 
+    // Fill the window with the color.
+    //SolidBrush brush(Color(255, 0, 0, 0));
+    //graphics.FillRectangle(&brush, 0, 0, 800, 600);
+
     // Draw axis.
     Pen      pen_x(Color(255, 255, 0, 0));
-    graphics.DrawLine(&pen_x, 0, height / 2 - 1, width - 1, height / 2 - 1);
+    //graphics.DrawLine(&pen_x, 0, height / 2 - 1, width - 1, height / 2 - 1);
     Pen      pen_y(Color(255, 0, 255, 0));
-    graphics.DrawLine(&pen_y, width / 2, 0, width / 2, height - 1);
+    //graphics.DrawLine(&pen_y, width / 2, 0, width / 2, height - 1);
 
-    std::array<Line, 14> lines{ {
+    std::array<Line, 14> test_line_set_1{ {
         {round(2.14715f), round(0.47057f), round(3.64715f), round(0.47057f)},
         {round(1.81549f), round(1.02138f), round(3.62763f), round(1.65096f)},
         {round(0.94892f), round(2.07485f), round(8.55611f), round(17.03125f)},
@@ -47,10 +51,37 @@ VOID OnPaint(HDC hdc) {
         {round(1.71092f), round(-0.64989f), round(3.37499f), round(-1.43225f)}
     } };
 
-    for (const Line& line : lines) {
+    /*for (const Line& line : test_line_set_1) {
         graphics.DrawLine(&pen,
             (width / 2) + line.x0, (height / 2 - 1) - line.y0,
             (width / 2) + line.x1, (height / 2 - 1) - line.y1);
+    }*/
+
+    std::array<Line, 18> test_line_set_2{ {
+        {round(700.0f), round(10.0f), round(600.0f), round(20.0f)}, // Trivially accepted.
+        {round(-100.0f), round(-200.0f), round(100.0f), round(-200.0f)}, // Trivially rejected.
+        {round(-200.0f), round(-100.0f), round(-200.0f), round(700.0f)}, // Trivially rejected.
+        {round(-100.0f), round(800.0f), round(900.0f), round(800.0f)}, // Trivially rejected.
+        {round(1000.0f), round(-100.0f), round(1000.0f), round(100.0f)}, // Trivially rejected.
+        {round(-50.0f), round(100.0f), round(50.0f), round(100.0f)},
+        {round(200.0f), round(50.0f), round(200.0f), round(-50.0f)},
+        {round(850.0f), round(100.0f), round(750.0f), round(100.0f)},
+        {round(200.0f), round(550.0f), round(200.0f), round(650.0f)},
+        {round(-50.0f), round(150.0f), round(850.0f), round(150.0f)},
+        {round(250.0f), round(-50.0f), round(250.0f), round(650.0f)},
+        {round(-150.0f), round(50.0f), round(50.0f), round(-150.0f)},
+        {round(-25.0f), round(75.0f), round(75.0f), round(-25.0f)},
+        {round(724.0f), round(-25.0f), round(824.0f), round(75.0f)},
+        {round(724.0f), round(624.0f), round(824.0f), round(524.0f)},
+        {round(-25.0f), round(524.0f), round(75.0f), round(624.0f)},
+        {round(-100.0f), round(-150.0f), round(899.0f), round(749.0f)}, // The worst case 1.
+        {round(-100.0f), round(749.0f), round(899.0f), round(-150.0f)} // The worst case 2.
+    } };
+
+    for (const Line& line : test_line_set_2) {
+        graphics.DrawLine(&pen,
+            line.x0, line.y0,
+            line.x1, line.y1);
     }
 }
 
